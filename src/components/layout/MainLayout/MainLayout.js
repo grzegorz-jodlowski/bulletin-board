@@ -1,15 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MainLayout = ({ children }) => (
+// import { connect } from 'react-redux';
+// import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
+
+const Component = ({ children }) => (
   <div>
     {children}
   </div>
 );
 
-MainLayout.propTypes = {
+Component.propTypes = {
   children: PropTypes.node,
 };
 
-export default MainLayout;
+// const mapStateToProps = state => ({
+//   concerts: reduxSelector(state),
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//   someAction: arg => dispatch(reduxActionCreator(arg)),
+// });
+
+// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+
+export {
+  Component as MainLayout,
+  // Container as MainLayout,
+  Component as MainLayoutComponent, //for tests
+};
 
