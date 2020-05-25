@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
+import { PageNav } from '../PageNav/PageNav';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Container from '@material-ui/core/Container';
+
 import styles from './MainLayout.module.scss';
 
 // import { connect } from 'react-redux';
@@ -9,8 +14,18 @@ import styles from './MainLayout.module.scss';
 
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
-    <h2>MainLayout</h2>
-    {children}
+    <AppBar>
+      <Container maxWidth='lg'>
+        <Toolbar disableGutters>
+          <PageNav />
+        </Toolbar>
+      </Container>
+    </AppBar>
+    <Container maxWidth='lg'>
+      <Toolbar />
+      {children}
+    </Container>
+
   </div>
 );
 
