@@ -9,10 +9,10 @@ import Container from '@material-ui/core/Container';
 
 import styles from './MainLayout.module.scss';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
+import { connect } from 'react-redux';
+import { updateLoginStatus } from '../../../redux/loginRedux';
 
-const Component = ({ className, children }) => (
+const Component = ({ className, children, updateLoginStatus }) => (
   <div className={clsx(className, styles.root)}>
     <AppBar>
       <Container maxWidth='lg'>
@@ -23,6 +23,11 @@ const Component = ({ className, children }) => (
     </AppBar>
     <Container maxWidth='lg'>
       <Toolbar />
+      <select onChange={(e) => updateLoginStatus(e.target.value)} >
+        <option value="login">Login</option>
+        <option value="logout">Logout</option>
+        <option value="admin">admin</option>
+      </select>
       {children}
     </Container>
 
@@ -32,21 +37,21 @@ const Component = ({ className, children }) => (
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  updateLoginStatus: PropTypes.func,
 };
 
-// const mapStateToProps = state => ({
-//   concerts: reduxSelector(state),
-// });
+const mapStateToProps = state => ({
+});
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  updateLoginStatus: log => dispatch(updateLoginStatus(log)),
+});
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const ReduxContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  Component as MainLayout,
-  // Container as MainLayout,
+  // Component as MainLayout,
+  ReduxContainer as MainLayout,
   Component as MainLayoutComponent, //for tests
 };
 
