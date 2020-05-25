@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import postsReducer from './postsRedux';
-import initialState from './initialState';
+import { initialState } from './initialState';
 
 // define reducers
 const reducers = {
@@ -28,4 +28,4 @@ const store = createStore(
   )
 );
 
-export default store;
+export { store };

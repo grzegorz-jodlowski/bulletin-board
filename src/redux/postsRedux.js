@@ -1,5 +1,5 @@
-import Axios from 'axios';
-import { api } from '../settings';
+//import Axios from 'axios';
+//import { api } from '../settings';
 
 /* selectors */
 export const getAll = ({ posts }) => posts.data;
@@ -22,33 +22,33 @@ export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const updatePostStatus = payload => ({ payload, type: UPDATE_POST_STATUS });
 
 /* thunk creators */
-export const fetchFromAPI = () => {
-  return (dispatch, getState) => {
-    dispatch(fetchStarted());
+// export const fetchFromAPI = () => {
+//   return (dispatch, getState) => {
+//     dispatch(fetchStarted());
 
-    Axios
-      .get(`${api.url}/${api.posts}`)
-      .then(res => {
-        dispatch(fetchSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(fetchError(err.message || true));
-      });
-  };
-};
+//     Axios
+//       .get(`${api.url}/${api.posts}`)
+//       .then(res => {
+//         dispatch(fetchSuccess(res.data));
+//       })
+//       .catch(err => {
+//         dispatch(fetchError(err.message || true));
+//       });
+//   };
+// };
 
-export const postToAPI = ({ id, order, status }, newStatus) => {
-  return (dispatch, getState) => {
-    Axios
-      .put(`${api.url}/${api.posts}/${id}`, { id: id, order: order, status: newStatus })
-      .then(res => {
-        dispatch(updatePostStatus(res.data));
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-};
+// export const postToAPI = ({ id, order, status }, newStatus) => {
+//   return (dispatch, getState) => {
+//     Axios
+//       .put(`${api.url}/${api.posts}/${id}`, { id: id, order: order, status: newStatus })
+//       .then(res => {
+//         dispatch(updatePostStatus(res.data));
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       });
+//   };
+// };
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
