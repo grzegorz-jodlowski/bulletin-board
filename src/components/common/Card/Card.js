@@ -37,7 +37,7 @@ const Component = ({ post }) => {
   const { title, image, imageTitle, description, id } = post;
 
   return (
-    <Link href={`${process.env.PUBLIC_URL}/post/${id}`}>
+    <Link underline='none' href={`${process.env.PUBLIC_URL}/post/${id}`}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.cardMedia}
