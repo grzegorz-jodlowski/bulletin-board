@@ -4,14 +4,17 @@ import clsx from 'clsx';
 
 import styles from './Homepage.module.scss';
 
+import { Hero } from '../../layout/Hero/Hero';
+
+
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
 
 const Component = ({ className, children }) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>Homepage</h2>
+  <main className={clsx(className, styles.root)}>
+    <Hero />
     {children}
-  </div>
+  </main>
 );
 
 Component.propTypes = {
