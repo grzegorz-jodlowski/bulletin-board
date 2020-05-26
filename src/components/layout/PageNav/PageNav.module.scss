@@ -2,9 +2,16 @@
 
 .root {
   padding: $base-size;
-  margin-left: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .link {
   color: #fff;
+}
+
+.logo {
+  font-size: 2rem;
+  margin-right: 10px;
 }
