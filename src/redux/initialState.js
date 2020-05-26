@@ -12,7 +12,7 @@ export const initialState = {
         status: 'draft',
         price: 55,
         phone: '888-777-666',
-        image: 'https://source.unsplash.com/random',
+        image: 'https://cdn.pixabay.com/photo/2018/02/24/20/39/clock-3179167_960_720.jpg',
         imageTitle: 'Image title1',
       },
       {
@@ -25,7 +25,7 @@ export const initialState = {
         status: 'draft',
         price: 55,
         phone: '888-777-666',
-        image: 'https://source.unsplash.com/random',
+        image: 'https://cdn.pixabay.com/photo/2014/09/15/21/46/couch-447484_960_720.jpg',
         imageTitle: 'Image title1',
       },
       {
@@ -38,7 +38,7 @@ export const initialState = {
         status: 'draft',
         price: 55,
         phone: '888-777-666',
-        image: 'https://source.unsplash.com/random',
+        image: 'https://cdn.pixabay.com/photo/2016/11/19/15/50/chair-1840011_960_720.jpg',
         imageTitle: 'Image title1',
       },
       {
@@ -51,7 +51,7 @@ export const initialState = {
         status: 'draft',
         price: 55,
         phone: '888-777-666',
-        image: 'https://source.unsplash.com/random',
+        image: 'https://cdn.pixabay.com/photo/2016/12/12/15/30/dodge-charger-1901806_960_720.jpg',
         imageTitle: 'Image title1',
       },
       {
@@ -64,7 +64,7 @@ export const initialState = {
         status: 'draft',
         price: 55,
         phone: '888-777-666',
-        image: 'https://source.unsplash.com/random',
+        image: 'https://cdn.pixabay.com/photo/2014/05/02/21/50/home-office-336377_960_720.jpg',
         imageTitle: 'Image title1',
       },
       {
@@ -77,7 +77,7 @@ export const initialState = {
         status: 'draft',
         price: 55,
         phone: '888-777-666',
-        image: 'https://source.unsplash.com/random',
+        image: 'https://cdn.pixabay.com/photo/2018/10/31/19/43/books-3786559_960_720.jpg',
         imageTitle: 'Image title1',
       },
 
