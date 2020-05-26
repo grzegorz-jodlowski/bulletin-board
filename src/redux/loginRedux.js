@@ -1,3 +1,6 @@
+/* selectors */
+export const getLoginState = (state) => state.isLogged;
+
 /* action name creator */
 const reducerName = 'login';
 const createActionName = name => `app/${reducerName}/${name}`;

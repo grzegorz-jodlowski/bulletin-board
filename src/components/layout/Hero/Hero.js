@@ -11,8 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
+import { connect } from 'react-redux';
+import { getLoginState } from '../../../redux/loginRedux';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Component = ({ className, children }) => {
+const Component = ({ className, children, isLogged }) => {
   const classes = useStyles();
 
   return (
@@ -40,7 +40,7 @@ const Component = ({ className, children }) => {
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
-              {true && <Button variant="contained" color="primary" href={`${process.env.PUBLIC_URL}/post/add`}>
+              {isLogged && <Button variant="contained" color="primary" href={`${process.env.PUBLIC_URL}/post/add`}>
                 Add new post
               </Button>}
             </Grid>
@@ -54,21 +54,22 @@ const Component = ({ className, children }) => {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  isLogged: PropTypes.bool,
 };
 
-// const mapStateToProps = state => ({
-//   concerts: reduxSelector(state),
-// });
+const mapStateToProps = state => ({
+  isLogged: getLoginState(state),
+});
 
 // const mapDispatchToProps = dispatch => ({
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const ReduxContainer = connect(mapStateToProps)(Component);
 
 export {
-  Component as Hero,
-  // Container as Hero,
+  // Component as Hero,
+  ReduxContainer as Hero,
   Component as HeroComponent, //for tests
 };
 
