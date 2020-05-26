@@ -3,6 +3,7 @@ export const initialState = {
   posts: {
     data: [
       {
+        id: '1',
         title: 'Announcement title 1',
         description: 'This is a description. You can use this section to describe the content',
         publicationDate: '2020-04-20',
@@ -15,6 +16,7 @@ export const initialState = {
         imageTitle: 'Image title1',
       },
       {
+        id: '2',
         title: 'Announcement title 2',
         description: 'This is a description. You can use this section to describe the content',
         publicationDate: '2020-04-20',
@@ -27,6 +29,7 @@ export const initialState = {
         imageTitle: 'Image title1',
       },
       {
+        id: '3',
         title: 'Announcement title 3',
         description: 'This is a description. You can use this section to describe the content',
         publicationDate: '2020-04-20',
@@ -39,6 +42,7 @@ export const initialState = {
         imageTitle: 'Image title1',
       },
       {
+        id: '4',
         title: 'Announcement title 4',
         description: 'This is a description. You can use this section to describe the content',
         publicationDate: '2020-04-20',
@@ -51,6 +55,7 @@ export const initialState = {
         imageTitle: 'Image title1',
       },
       {
+        id: '5',
         title: 'Announcement title 5',
         description: 'This is a description. You can use this section to describe the content',
         publicationDate: '2020-04-20',
@@ -63,6 +68,7 @@ export const initialState = {
         imageTitle: 'Image title1',
       },
       {
+        id: '6',
         title: 'Announcement title 6',
         description: 'This is a description. You can use this section to describe the content',
         publicationDate: '2020-04-20',
