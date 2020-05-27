@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-
-import styles from './Card.module.scss';
+import { Link } from 'react-router-dom';
 
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -22,12 +20,19 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    transition: '.2s',
+    '&:hover': {
+      transform: 'scale(1.04)',
+    },
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
   },
   cardContent: {
     flexGrow: 1,
+  },
+  link: {
+    textDecoration: 'none',
   },
 }));
 
@@ -37,7 +42,7 @@ const Component = ({ post }) => {
   const { title, image, imageTitle, description, id } = post;
 
   return (
-    <Link underline='none' href={`${process.env.PUBLIC_URL}/post/${id}`}>
+    <Link to={`${process.env.PUBLIC_URL}/post/${id}`} className={classes.link}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.cardMedia}

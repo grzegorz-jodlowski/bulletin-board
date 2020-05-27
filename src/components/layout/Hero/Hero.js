@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import styles from './Hero.module.scss';
-
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -15,6 +13,9 @@ import { connect } from 'react-redux';
 import { getLoginState } from '../../../redux/loginRedux';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: '2rem',
+  },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
@@ -25,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Component = ({ className, children, isLogged }) => {
+const Component = ({ className, isLogged }) => {
   const classes = useStyles();
 
   return (
-    <div className={clsx(className, styles.root)}>
+    <div className={clsx(className, classes.root)}>
       <Container maxWidth="sm">
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
           Bulletin board
@@ -52,7 +53,6 @@ const Component = ({ className, children, isLogged }) => {
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
   isLogged: PropTypes.bool,
 };
