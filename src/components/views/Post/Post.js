@@ -12,9 +12,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 import { connect } from 'react-redux';
 import { getAll } from '../../../redux/postsRedux';
+import { getLoginState } from '../../../redux/loginRedux';
+
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -33,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {
     flexGrow: 1,
   },
+  cardActions: {
+    padding: '16px',
+  },
   price: {
     color: theme.palette.primary.main,
     fontWeight: '700',
@@ -40,12 +46,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Component = ({ posts, match }) => {
+const Component = ({ posts, match, isLogged }) => {
   const classes = useStyles();
 
   const post = posts.find(el => el.id === match.params.id);
 
-  const { title, image, imageTitle, description, id, price } = post;
+  const { title, image, imageTitle, description, price, id } = post;
+
+  //TODO: isAdmin, isAuthor - render EDIT button for them
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
@@ -63,11 +71,15 @@ const Component = ({ posts, match }) => {
             <Typography>
               {description}
             </Typography>
-          </CardContent>
-          <CardActions>
             <Typography className={classes.price}>
               {`Price: ${price}$`}
             </Typography>
+          </CardContent>
+          <CardActions className={classes.cardActions}>
+            {/* Add isAuthor, isAdmin */}
+            {isLogged && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${id}/edit`}>
+              Edit
+            </Button>)}
           </CardActions>
         </Card>
       </Grid>
@@ -78,10 +90,12 @@ const Component = ({ posts, match }) => {
 Component.propTypes = {
   posts: PropTypes.array,
   match: PropTypes.object,
+  isLogged: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   posts: getAll(state),
+  isLogged: getLoginState(state),
 });
 
 // const mapDispatchToProps = dispatch => ({
