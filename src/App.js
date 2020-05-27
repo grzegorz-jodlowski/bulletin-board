@@ -28,7 +28,7 @@ const theme = createMuiTheme({
 
 const App = () => (
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <StylesProvider injectFirst>
         <ThemeProvider theme={theme}>
           <CssBaseline />

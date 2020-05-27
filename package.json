@@ -1,6 +1,7 @@
 {
   "name": "bulletin-board",
   "version": "0.1.0",
+  "homepage": "https://grzegorz-jodlowski.github.io/bulletin-board/",
   "private": true,
   "scripts": {
     "start": "run-p start:* ",
@@ -11,7 +12,9 @@
     "test": "react-scripts test --noStackTrace",
     "test-all": "react-scripts test --watchAll=false --noStackTrace",
     "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "husky": {
     "hooks": {
@@ -57,6 +60,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
     "redux-devtools-extension": "^2.13.8"
