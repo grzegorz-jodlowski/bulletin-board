@@ -34,12 +34,17 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
   },
+  price: {
+    color: theme.palette.primary.main,
+    fontWeight: '700',
+  },
+
 }));
 
 const Component = ({ post }) => {
   const classes = useStyles();
 
-  const { title, image, imageTitle, description, id } = post;
+  const { title, image, imageTitle, description, id, price } = post;
 
   return (
     <Link to={`${process.env.PUBLIC_URL}/post/${id}`} className={classes.link}>
@@ -58,15 +63,12 @@ const Component = ({ post }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          {/* <Button size="small" color="primary" href={`${process.env.PUBLIC_URL}/post/${id}`}>
-                    View
-                  </Button> */}
-          {/* <Button size="small" color="primary">
-                    Edit
-                  </Button> */}
+          <Typography className={classes.price}>
+            {`Price: ${price}$`}
+          </Typography>
         </CardActions>
       </Card>
-    </Link>
+    </Link >
   );
 };
 Component.propTypes = {
