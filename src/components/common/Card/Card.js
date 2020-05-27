@@ -21,17 +21,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     transition: '.2s',
+    '&:hover': {
+      transform: 'scale(1.04)',
+    },
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
   },
   cardContent: {
     flexGrow: 1,
-  },
-  hoverScale: {
-    '&:hover': {
-      transform: 'scale(1.04)',
-    },
   },
   link: {
     textDecoration: 'none',
@@ -40,17 +38,16 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     fontWeight: '700',
   },
-
 }));
 
-const Component = ({ post, hoverScale }) => {
+const Component = ({ post }) => {
   const classes = useStyles();
 
   const { title, image, imageTitle, description, id, price } = post;
 
   return (
     <Link to={`${process.env.PUBLIC_URL}/post/${id}`} className={classes.link}>
-      <Card className={hoverScale ? clsx(classes.card, classes.hoverScale) : classes.card}>
+      <Card className={classes.card}>
         <CardMedia
           className={classes.cardMedia}
           image={image}
@@ -70,11 +67,10 @@ const Component = ({ post, hoverScale }) => {
           </Typography>
         </CardActions>
       </Card>
-    </Link >
+    </Link>
   );
 };
 Component.propTypes = {
-  hoverScale: PropTypes.bool,
   post: PropTypes.object,
 };
 

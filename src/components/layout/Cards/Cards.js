@@ -26,8 +26,8 @@ const Component = ({ className, posts }) => {
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
           {posts.map((post) => (
-            <Grid item key={post.title} xs={12} sm={6} md={4}>
-              <Card post={post} hoverScale />
+            <Grid item key={post.id} xs={12} sm={6} md={4}>
+              <Card post={post} />
             </Grid>
           ))}
         </Grid>
