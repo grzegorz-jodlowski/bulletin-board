@@ -28,18 +28,18 @@ const theme = createMuiTheme({
 
 const App = () => (
   <Provider store={store}>
-    <BrowserRouter basename="/">
+    <BrowserRouter >
       <StylesProvider injectFirst>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <MainLayout>
             <Switch>
-              <Route exact path='/' component={Homepage} />
-              <Route exact path='/post/add' component={PostAdd} />
-              <Route exact path='/post/:id' component={Post} />
-              <Route exact path='/post/:id/edit' component={PostEdit} />
-              <Route exact path='/posts' component={MyPosts} />
-              <Route exact path='*' component={NotFound} />
+              <Route exact path={`${process.env.PUBLIC_URL}/`} component={Homepage} />
+              <Route exact path={`${process.env.PUBLIC_URL}/post/add`} component={PostAdd} />
+              <Route exact path={`${process.env.PUBLIC_URL}/post/:id`} component={Post} />
+              <Route exact path={`${process.env.PUBLIC_URL}/post/:id/edit`} component={PostEdit} />
+              <Route exact path={`${process.env.PUBLIC_URL}/posts`} component={MyPosts} />
+              <Route exact path={`${process.env.PUBLIC_URL}*`} component={NotFound} />
             </Switch>
           </MainLayout>
         </ThemeProvider>
