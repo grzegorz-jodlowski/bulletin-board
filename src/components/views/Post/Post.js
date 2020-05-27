@@ -4,34 +4,56 @@ import clsx from 'clsx';
 
 import styles from './Post.module.scss';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
+import { Card } from '../../common/Card/Card';
 
-const Component = ({ className, children }) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>Post</h2>
-    {children}
-  </div>
-);
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { connect } from 'react-redux';
+import { getAll } from '../../../redux/postsRedux';
+
+const useStyles = makeStyles((theme) => ({
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+}));
+
+
+const Component = ({ className, posts, match }) => {
+  const classes = useStyles();
+
+  const post = posts.find(el => el.id === match.params.id);
+
+  return (
+    <Container className={classes.cardGrid} maxWidth="md">
+      <Grid item key={post.title}>
+        <Card post={post} hoverScale={false} />
+      </Grid>
+    </Container>
+  );
+};
 
 Component.propTypes = {
-  children: PropTypes.node,
+  posts: PropTypes.array,
+  match: PropTypes.object,
   className: PropTypes.string,
 };
 
-// const mapStateToProps = state => ({
-//   concerts: reduxSelector(state),
-// });
+const mapStateToProps = state => ({
+  posts: getAll(state),
+});
 
 // const mapDispatchToProps = dispatch => ({
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const ReduxContainer = connect(mapStateToProps)(Component);
 
 export {
-  Component as Post,
-  // Container as Post,
+  // Component as Post,
+  ReduxContainer as Post,
   Component as PostComponent, //for tests
 };
 
