@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import styles from './Cards.module.scss';
-
 import { Card } from '../../common/Card/Card';
 
 import Container from '@material-ui/core/Container';
@@ -24,12 +22,12 @@ const Component = ({ className, posts }) => {
   const classes = useStyles();
 
   return (
-    <div className={clsx(className, styles.root)}>
+    <div className={clsx(className)}>
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
           {posts.map((post) => (
             <Grid item key={post.title} xs={12} sm={6} md={4}>
-              <Card post={post} />
+              <Card post={post} hoverScale />
             </Grid>
           ))}
         </Grid>
