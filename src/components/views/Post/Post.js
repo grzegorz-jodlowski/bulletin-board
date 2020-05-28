@@ -63,10 +63,10 @@ const Component = ({ posts, match, isLogged, currentUser }) => {
 
   const post = posts.find(el => el.id === match.params.id);
 
-  const { title, image, imageTitle, description, price, id, phone, authorName, authorEmail, status, publicationDate } = post;
-  const { isAdmin, id: authorId } = currentUser;
+  const { title, image, imageTitle, description, price, id, phone, authorName, authorEmail, status, publicationDate, authorId: postAuthorId } = post;
+  const { isAdmin, id: userId } = currentUser;
 
-  const isPostAuthor = id === authorId ? true : false;
+  const isPostAuthor = postAuthorId === userId ? true : false;
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
