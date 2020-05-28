@@ -4,12 +4,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import postsReducer from './postsRedux';
 import loginReducer from './loginRedux';
+import userReducer from './userRedux';
 import { initialState } from './initialState';
 
 // define reducers
 const reducers = {
   posts: postsReducer,
   isLogged: loginReducer,
+  currentUser: userReducer,
 };
 
 // add blank reducers for initial state properties without reducers
