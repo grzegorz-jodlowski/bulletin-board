@@ -20,9 +20,9 @@ const Component = ({ className, children }) => (
       <div className={styles.mouth}></div>
     </div>
 
-    <h1>Oops! Something went wrong!</h1>
-    <div className={styles.btn} href={`${process.env.PUBLIC_URL}/`}>Return to Home</div>
-  </div>
+    <h1>Oops! Page not fount!</h1>
+    <div className={styles.btn}><a href={`${process.env.PUBLIC_URL}/`} > Return to Homepage</a></div>
+  </div >
 );
 
 Component.propTypes = {

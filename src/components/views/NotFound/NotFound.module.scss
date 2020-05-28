@@ -1,9 +1,5 @@
 @import "../../../styles/settings.scss";
 
-// .root {
-
-// }
-
 $gb: #f2eee8;
 $wh: #ffffff;
 $dark: #383a41;
@@ -163,21 +159,26 @@ h1 {
 }
 
 .btn {
-  font-family: "Open Sans";
-  font-weight: 400;
-  padding: 20px;
   background-color: rgba($blue, 1);
-  color: white;
   width: 320px;
   margin: 0 auto;
   text-align: center;
-  font-size: 1.2em;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 80px;
   margin-bottom: 50px;
   transition: all 0.2s linear;
   text-decoration: none;
+
+  a {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    padding: 20px;
+    display: block;
+  }
 
   @media screen and (max-width: $break) {
     margin: 0 auto;
