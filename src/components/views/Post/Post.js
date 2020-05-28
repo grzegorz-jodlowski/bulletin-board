@@ -39,10 +39,21 @@ const useStyles = makeStyles((theme) => ({
   },
   cardActions: {
     padding: '16px',
+    position: 'relative',
   },
-  price: {
+  detail: {
     color: theme.palette.primary.main,
     fontWeight: '700',
+    paddingTop: '16px',
+  },
+  status: {
+    color: 'red',
+  },
+  publicationDate: {
+    position: 'absolute',
+    bottom: '10px',
+    right: '15px',
+    fontStyle: 'italic',
   },
 }));
 
@@ -52,7 +63,7 @@ const Component = ({ posts, match, isLogged, currentUser }) => {
 
   const post = posts.find(el => el.id === match.params.id);
 
-  const { title, image, imageTitle, description, price, id } = post;
+  const { title, image, imageTitle, description, price, id, phone, authorName, authorEmail, status, publicationDate } = post;
   const { isAdmin, id: authorId } = currentUser;
 
   const isPostAuthor = id === authorId ? true : false;
@@ -73,15 +84,30 @@ const Component = ({ posts, match, isLogged, currentUser }) => {
             <Typography>
               {description}
             </Typography>
-            <Typography className={classes.price}>
+            <Typography className={classes.detail}>
               {`Price: ${price}$`}
             </Typography>
+            <Typography className={classes.detail}>
+              {`Phone: ${phone}`}
+            </Typography>
+            <Typography className={classes.detail}>
+              {`Seller: ${authorName}`}
+            </Typography>
+            {(isLogged && (isPostAuthor || isAdmin)) && (<Typography className={clsx(classes.detail, classes.status)}>
+              {`Status: ${status}`}
+            </Typography>)}
+
           </CardContent>
           <CardActions className={classes.cardActions}>
-            {/* Add isAuthor, isAdmin */}
             {(isLogged && (isPostAuthor || isAdmin)) && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${id}/edit`}>
               Edit
             </Button>)}
+            <Button size="medium" color="primary" variant="contained" href={`mailto:${authorEmail}`}>
+              Email to seller
+            </Button>
+            <Typography className={classes.publicationDate}>
+              {`${publicationDate}`}
+            </Typography>
           </CardActions>
         </Card>
       </Grid>
