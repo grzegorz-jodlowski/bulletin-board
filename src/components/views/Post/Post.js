@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import styles from './Post.module.scss';
+// import styles from './Post.module.scss';
 
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
