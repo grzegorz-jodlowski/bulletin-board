@@ -17,6 +17,7 @@ import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { getAll } from '../../../redux/postsRedux';
 import { getLoginState } from '../../../redux/loginRedux';
+import { getCurrentUser } from '../../../redux/userRedux';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,14 +47,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Component = ({ posts, match, isLogged }) => {
+const Component = ({ posts, match, isLogged, currentUser }) => {
   const classes = useStyles();
 
   const post = posts.find(el => el.id === match.params.id);
 
   const { title, image, imageTitle, description, price, id } = post;
+  const { isAdmin, id: authorId } = currentUser;
 
-  //TODO: isAdmin, isAuthor - render EDIT button for them
+  const isPostAuthor = id === authorId ? true : false;
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
@@ -77,7 +79,7 @@ const Component = ({ posts, match, isLogged }) => {
           </CardContent>
           <CardActions className={classes.cardActions}>
             {/* Add isAuthor, isAdmin */}
-            {isLogged && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${id}/edit`}>
+            {(isLogged && (isPostAuthor || isAdmin)) && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${id}/edit`}>
               Edit
             </Button>)}
           </CardActions>
@@ -90,12 +92,14 @@ const Component = ({ posts, match, isLogged }) => {
 Component.propTypes = {
   posts: PropTypes.array,
   match: PropTypes.object,
+  currentUser: PropTypes.object,
   isLogged: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   posts: getAll(state),
   isLogged: getLoginState(state),
+  currentUser: getCurrentUser(state),
 });
 
 // const mapDispatchToProps = dispatch => ({
