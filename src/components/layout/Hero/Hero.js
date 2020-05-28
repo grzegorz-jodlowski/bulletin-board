@@ -42,7 +42,7 @@ const Component = ({ className, isLogged }) => {
           <Grid container spacing={2} justify="center">
             <Grid item>
               {isLogged && <Button variant="contained" color="primary" href={`${process.env.PUBLIC_URL}/post/add`}>
-                Add new post
+                Add new
               </Button>}
             </Grid>
           </Grid>
