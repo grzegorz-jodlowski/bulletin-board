@@ -37,9 +37,7 @@ const App = () => (
             <Switch>
               {}
               <Route exact path={`${process.env.PUBLIC_URL}/`} component={Homepage} />
-              <Route exact path={`${process.env.PUBLIC_URL}/post/add`} >
-                {store.getState().isLogged ? <PostAdd /> : <Redirect to={`${process.env.PUBLIC_URL}/login`} />}
-              </Route>
+              <Route exact path={`${process.env.PUBLIC_URL}/post/add`} component={PostAdd} />
               <Route exact path={`${process.env.PUBLIC_URL}/post/:id`} component={Post} />
               <Route exact path={`${process.env.PUBLIC_URL}/post/:id/edit`} >
                 {store.getState().isLogged ? <PostEdit /> : <Redirect to={`${process.env.PUBLIC_URL}/login`} />}
