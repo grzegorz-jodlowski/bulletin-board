@@ -18,7 +18,9 @@ import TextField from '@material-ui/core/TextField';
 
 
 const useStyles = makeStyles((theme) => ({
-
+  header: {
+    marginBottom: '25px',
+  },
   layout: {
     width: 'auto',
     marginLeft: theme.spacing(2),
@@ -59,7 +61,7 @@ const Component = ({ isLogged }) => {
     return (
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography component="h1" variant="h4" align="center">
+          <Typography className={classes.header} component="h1" variant="h4" align="center">
             Add your new ad
           </Typography>
           <Grid container spacing={3}>
