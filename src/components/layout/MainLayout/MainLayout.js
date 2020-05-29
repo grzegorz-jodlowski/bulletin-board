@@ -27,7 +27,6 @@ const Component = ({ className, children, updateLoginStatus }) => (
       <select onChange={(e) => updateLoginStatus(e.target.value)} >
         <option value="login">Login</option>
         <option value="logout">Logout</option>
-        <option value="admin">admin</option>
       </select>
       {children}
     </Container>

@@ -9,7 +9,7 @@ import styles from './Login.module.scss';
 
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
-    <h2>Login</h2>
+    <h2>Podstrona logowania - endpoint do autoryzacji google</h2>
     {children}
   </div>
 );
