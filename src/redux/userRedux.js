@@ -2,25 +2,24 @@
 export const getCurrentUser = (state) => state.currentUser;
 
 /* action name creator */
-// const reducerName = 'currentUser';
-// const createActionName = name => `app/${reducerName}/${name}`;
+const reducerName = 'currentUser';
+const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
-// const UPDATE_USER_STATUS = createActionName('UPDATE_USER_STATUS');
+const UPDATE_ADMIN_STATUS = createActionName('UPDATE_ADMIN_STATUS');
 
 /* action creators */
-// export const updateUserStatus = payload => ({ payload, type: UPDATE_USER_STATUS });
+export const updateAdminStatus = payload => ({ payload, type: UPDATE_ADMIN_STATUS });
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
   switch (action.type) {
-    // case UPDATE_USER_STATUS:
-    //   switch (action.payload) {
-    //     case 'login': return true;
-    //     case 'logout': return false;
-    //     default:
-    //       return statePart;
-    //   }
+    case UPDATE_ADMIN_STATUS: {
+      return {
+        ...statePart,
+        isAdmin: action.payload,
+      };
+    }
     default:
       return statePart;
   }
