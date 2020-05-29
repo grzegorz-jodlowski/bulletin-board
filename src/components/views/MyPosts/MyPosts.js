@@ -4,34 +4,42 @@ import clsx from 'clsx';
 
 import styles from './MyPosts.module.scss';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
+import { connect } from 'react-redux';
+import { getLoginState } from '../../../redux/loginRedux';
 
-const Component = ({ className, children }) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>MyPosts</h2>
-    {children}
-  </div>
-);
+import { Login } from '../Login/Login';
 
-Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+const Component = ({ isLogged }) => {
+
+  if (isLogged) {
+    return (
+      <div >
+        <h2>MyPosts</h2>
+      </div>
+    );
+  } else {
+    return <Login />;
+  }
 };
 
-// const mapStateToProps = state => ({
-//   concerts: reduxSelector(state),
-// });
+Component.propTypes = {
+  isLogged: PropTypes.bool,
+
+};
+
+const mapStateToProps = state => ({
+  isLogged: getLoginState(state),
+});
 
 // const mapDispatchToProps = dispatch => ({
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export {
-  Component as MyPosts,
-  // Container as MyPosts,
+  // Component as MyPosts,
+  Container as MyPosts,
   Component as MyPostsComponent, //for tests
 };
 
