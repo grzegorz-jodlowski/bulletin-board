@@ -35,7 +35,6 @@ const App = () => (
           <CssBaseline />
           <MainLayout>
             <Switch>
-              {}
               <Route exact path={`${process.env.PUBLIC_URL}/`} component={Homepage} />
               <Route exact path={`${process.env.PUBLIC_URL}/post/add`} component={PostAdd} />
               <Route exact path={`${process.env.PUBLIC_URL}/post/:id`} component={Post} />
