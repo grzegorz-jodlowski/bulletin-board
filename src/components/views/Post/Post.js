@@ -61,9 +61,9 @@ const useStyles = makeStyles((theme) => ({
 const Component = ({ posts, match, isLogged, currentUser }) => {
   const classes = useStyles();
 
-  const post = posts.find(el => el.id === match.params.id);
+  const post = posts.find(el => el._id === match.params._id);
 
-  const { title, photo, text, price, id, phone, author, status, created } = post;
+  const { title, photo, text, price, _id, phone, author, status, created } = post;
   const { isAdmin, email } = currentUser;
 
   const isPostAuthor = author === email ? true : false;
@@ -95,7 +95,7 @@ const Component = ({ posts, match, isLogged, currentUser }) => {
 
           </CardContent>
           <CardActions className={classes.cardActions}>
-            {(isLogged && (isPostAuthor || isAdmin)) && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${id}/edit`}>
+            {(isLogged && (isPostAuthor || isAdmin)) && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${_id}/edit`}>
               Edit
             </Button>)}
             <Button size="medium" color="primary" variant="contained" href={`mailto:${author}`}>

@@ -42,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
 const Component = ({ post }) => {
   const classes = useStyles();
 
-  const { title, photo, id, author, created, price } = post;
+  const { title, photo, _id, author, created, price } = post;
 
   return (
-    <Link to={`${process.env.PUBLIC_URL}/post/${id}`} className={classes.link}>
+    <Link to={`${process.env.PUBLIC_URL}/post/${_id}`} className={classes.link}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.cardMedia}
