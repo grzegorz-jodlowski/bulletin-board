@@ -65,21 +65,11 @@ const Component = ({ isLogged }) => {
             Add your new ad
           </Typography>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 required
-                id="authorName"
-                name="authorName"
-                label="First name"
-                fullWidth
-                autoComplete="given-name"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id="authorEmail"
-                name="authorEmail"
+                id="author"
+                name="author"
                 label="Email address"
                 fullWidth
                 autoComplete="email"
@@ -97,15 +87,14 @@ const Component = ({ isLogged }) => {
             <Grid item xs={12}>
               <TextField
                 required
-                id="description"
-                name="description"
+                id="text"
+                name="text"
                 label="Description"
                 fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                required
                 id="phone"
                 name="phone"
                 label="Phone"
@@ -114,7 +103,6 @@ const Component = ({ isLogged }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                required
                 id="price"
                 name="price"
                 label="Price"
@@ -123,19 +111,9 @@ const Component = ({ isLogged }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                required
                 id="image"
                 name="image"
                 label="Image link"
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id="imageTitle"
-                name="imageTitle"
-                label="Image title"
                 fullWidth
               />
             </Grid>
