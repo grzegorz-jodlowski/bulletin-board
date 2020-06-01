@@ -3,3 +3,38 @@
 // .root {
 
 // }
+
+.cardGrid {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s;
+}
+.cardMedia {
+  padding-top: 56.25%; // 16:9
+}
+.cardContent {
+  flex-grow: 1;
+}
+.cardActions {
+  padding: 16px;
+  position: relative;
+}
+.detail {
+  color: $primary;
+  font-weight: 700;
+  padding-top: 16px;
+}
+.status {
+  color: red;
+}
+.created {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-style: italic;
+}
