@@ -1,6 +1,5 @@
 export const initialState = {
   currentUser: {
-    id: '1',
     isAdmin: false,
     name: 'Adam',
     email: 'aaa@bb.eu',
