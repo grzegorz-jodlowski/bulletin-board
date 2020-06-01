@@ -18,57 +18,60 @@ import { getAll } from '../../../redux/postsRedux';
 import { getLoginState } from '../../../redux/loginRedux';
 import { getCurrentUser } from '../../../redux/userRedux';
 
-const Component = ({ posts, match, isLogged, currentUser }) => {
+class Component extends React.Component {
+  render() {
+    const { posts, isLogged, match, currentUser } = this.props;
 
-  const post = posts.find(el => el._id === match.params._id);
+    const post = posts.find(el => el._id === match.params._id);
 
-  const { title, photo, text, price, _id, phone, author, status, created } = post;
-  const { isAdmin, email } = currentUser;
+    const { title, photo, text, price, _id, phone, author, status, created } = post;
+    const { isAdmin, email } = currentUser;
 
-  const isPostAuthor = author === email ? true : false;
+    const isPostAuthor = author === email ? true : false;
 
-  return (
-    <Container className={styles.cardGrid} maxWidth="md">
-      <Grid item>
-        <Card className={styles.card}>
-          <CardMedia
-            className={styles.cardMedia}
-            image={photo}
-          />
-          <CardContent className={styles.cardContent}>
-            <Typography gutterBottom variant="h5" component="h2">
-              {title}
-            </Typography>
-            <Typography>
-              {text}
-            </Typography>
-            <Typography className={styles.detail}>
-              {`Price: ${price}$`}
-            </Typography>
-            <Typography className={styles.detail}>
-              {`Phone: ${phone}`}
-            </Typography>
-            {(isLogged && (isPostAuthor || isAdmin)) && (<Typography className={clsx(styles.detail, styles.status)}>
-              {`Status: ${status}`}
-            </Typography>)}
+    return (
+      <Container className={styles.cardGrid} maxWidth="md">
+        <Grid item>
+          <Card className={styles.card}>
+            <CardMedia
+              className={styles.cardMedia}
+              image={photo}
+            />
+            <CardContent className={styles.cardContent}>
+              <Typography gutterBottom variant="h5" component="h2">
+                {title}
+              </Typography>
+              <Typography>
+                {text}
+              </Typography>
+              <Typography className={styles.detail}>
+                {`Price: ${price}$`}
+              </Typography>
+              <Typography className={styles.detail}>
+                {`Phone: ${phone}`}
+              </Typography>
+              {(isLogged && (isPostAuthor || isAdmin)) && (<Typography className={clsx(styles.detail, styles.status)}>
+                {`Status: ${status}`}
+              </Typography>)}
 
-          </CardContent>
-          <CardActions className={styles.cardActions}>
-            {(isLogged && (isPostAuthor || isAdmin)) && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${_id}/edit`}>
-              Edit
-            </Button>)}
-            <Button size="medium" color="primary" variant="contained" href={`mailto:${author}`}>
-              Email to seller
-            </Button>
-            <Typography className={styles.created}>
-              {`${created}`}
-            </Typography>
-          </CardActions>
-        </Card>
-      </Grid>
-    </Container>
-  );
-};
+            </CardContent>
+            <CardActions className={styles.cardActions}>
+              {(isLogged && (isPostAuthor || isAdmin)) && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${_id}/edit`}>
+                Edit
+              </Button>)}
+              <Button size="medium" color="primary" variant="contained" href={`mailto:${author}`}>
+                Email to seller
+              </Button>
+              <Typography className={styles.created}>
+                {`${created}`}
+              </Typography>
+            </CardActions>
+          </Card>
+        </Grid>
+      </Container>
+    );
+  }
+}
 
 Component.propTypes = {
   posts: PropTypes.array,
