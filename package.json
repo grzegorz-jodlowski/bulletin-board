@@ -14,7 +14,8 @@
     "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "nodemon": "nodemon backend/server.js"
   },
   "husky": {
     "hooks": {
