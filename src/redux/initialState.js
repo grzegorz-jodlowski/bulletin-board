@@ -8,6 +8,7 @@ export const initialState = {
   },
   isLogged: true,
   posts: {
+    currentPost: {},
     data: [
       // {
       //   id: '1',

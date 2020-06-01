@@ -14,15 +14,19 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import { connect } from 'react-redux';
-import { getAll } from '../../../redux/postsRedux';
+import { getCurrentPost, fetchPostDetails } from '../../../redux/postsRedux';
 import { getLoginState } from '../../../redux/loginRedux';
 import { getCurrentUser } from '../../../redux/userRedux';
 
 class Component extends React.Component {
-  render() {
-    const { posts, isLogged, match, currentUser } = this.props;
+  componentDidMount() {
+    const { match, fetchPostDetails } = this.props;
+    console.log(' : Component -> componentDidMount -> match', match.params._id);
+    fetchPostDetails(match.params._id);
+  }
 
-    const post = posts.find(el => el._id === match.params._id);
+  render() {
+    const { post, isLogged, match, currentUser } = this.props;
 
     const { title, photo, text, price, _id, phone, author, status, created } = post;
     const { isAdmin, email } = currentUser;
@@ -74,23 +78,24 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-  posts: PropTypes.array,
+  post: PropTypes.array,
   match: PropTypes.object,
   currentUser: PropTypes.object,
   isLogged: PropTypes.bool,
+  fetchPostDetails: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
-  posts: getAll(state),
+  post: getCurrentPost(state),
   isLogged: getLoginState(state),
   currentUser: getCurrentUser(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  fetchPostDetails: (id) => dispatch(fetchPostDetails(id)),
+});
 
-const ReduxContainer = connect(mapStateToProps)(Component);
+const ReduxContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as Post,
