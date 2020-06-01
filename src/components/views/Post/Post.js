@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   status: {
     color: 'red',
   },
-  publicationDate: {
+  created: {
     position: 'absolute',
     bottom: '10px',
     right: '15px',
@@ -63,10 +63,10 @@ const Component = ({ posts, match, isLogged, currentUser }) => {
 
   const post = posts.find(el => el.id === match.params.id);
 
-  const { title, image, imageTitle, description, price, id, phone, authorName, authorEmail, status, publicationDate, authorId: postAuthorId } = post;
-  const { isAdmin, id: userId } = currentUser;
+  const { title, photo, text, price, id, phone, author, status, created } = post;
+  const { isAdmin, email } = currentUser;
 
-  const isPostAuthor = postAuthorId === userId ? true : false;
+  const isPostAuthor = author === email ? true : false;
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
@@ -74,24 +74,20 @@ const Component = ({ posts, match, isLogged, currentUser }) => {
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
-            image={image}
-            title={imageTitle}
+            image={photo}
           />
           <CardContent className={classes.cardContent}>
             <Typography gutterBottom variant="h5" component="h2">
               {title}
             </Typography>
             <Typography>
-              {description}
+              {text}
             </Typography>
             <Typography className={classes.detail}>
               {`Price: ${price}$`}
             </Typography>
             <Typography className={classes.detail}>
               {`Phone: ${phone}`}
-            </Typography>
-            <Typography className={classes.detail}>
-              {`Seller: ${authorName}`}
             </Typography>
             {(isLogged && (isPostAuthor || isAdmin)) && (<Typography className={clsx(classes.detail, classes.status)}>
               {`Status: ${status}`}
@@ -102,11 +98,11 @@ const Component = ({ posts, match, isLogged, currentUser }) => {
             {(isLogged && (isPostAuthor || isAdmin)) && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${id}/edit`}>
               Edit
             </Button>)}
-            <Button size="medium" color="primary" variant="contained" href={`mailto:${authorEmail}`}>
+            <Button size="medium" color="primary" variant="contained" href={`mailto:${author}`}>
               Email to seller
             </Button>
-            <Typography className={classes.publicationDate}>
-              {`${publicationDate}`}
+            <Typography className={classes.created}>
+              {`${created}`}
             </Typography>
           </CardActions>
         </Card>
