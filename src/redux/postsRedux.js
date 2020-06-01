@@ -1,4 +1,4 @@
-//import Axios from 'axios';
+import Axios from 'axios';
 //import { api } from '../settings';
 
 /* selectors */
@@ -22,20 +22,20 @@ export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const updatePostStatus = payload => ({ payload, type: UPDATE_POST_STATUS });
 
 /* thunk creators */
-// export const fetchFromAPI = () => {
-//   return (dispatch, getState) => {
-//     dispatch(fetchStarted());
+export const fetchPublished = () => {
+  return (dispatch, getState) => {
+    dispatch(fetchStarted());
 
-//     Axios
-//       .get(`${api.url}/${api.posts}`)
-//       .then(res => {
-//         dispatch(fetchSuccess(res.data));
-//       })
-//       .catch(err => {
-//         dispatch(fetchError(err.message || true));
-//       });
-//   };
-// };
+    Axios
+      .get('http://localhost:8000/api/posts')
+      .then(res => {
+        dispatch(fetchSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
+};
 
 // export const postToAPI = ({ id, order, status }, newStatus) => {
 //   return (dispatch, getState) => {
