@@ -111,8 +111,8 @@ const Component = ({ isLogged }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                id="image"
-                name="image"
+                id="photo"
+                name="photo"
                 label="Image link"
                 fullWidth
               />

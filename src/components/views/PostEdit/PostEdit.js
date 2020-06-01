@@ -61,10 +61,10 @@ const Component = ({ isLogged, currentUser, match, posts }) => {
 
   const post = posts.find(el => el.id === match.params.id);
 
-  const { title, image, imageTitle, description, price, id, phone, authorName, authorEmail, status, publicationDate, authorId: postAuthorId } = post;
-  const { isAdmin, id: userId } = currentUser;
+  const { title, photo, text, price, id, phone, author, status, created } = post;
+  const { isAdmin, email } = currentUser;
 
-  const isPostAuthor = postAuthorId === userId ? true : false;
+  const isPostAuthor = author === email ? true : false;
 
   if (isLogged && (isPostAuthor || isAdmin)) {
     return (
@@ -74,27 +74,15 @@ const Component = ({ isLogged, currentUser, match, posts }) => {
             Edit your ad
           </Typography>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 required
-                id="authorName"
-                name="authorName"
-                label="First name"
-                fullWidth
-                autoComplete="given-name"
-                value={authorName}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id="authorEmail"
-                name="authorEmail"
+                id="author"
+                name="author"
                 label="Email address"
                 fullWidth
                 autoComplete="email"
-                value={authorEmail}
-
+                value={author}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,62 +93,43 @@ const Component = ({ isLogged, currentUser, match, posts }) => {
                 label="Title"
                 fullWidth
                 value={title}
-
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 required
-                id="description"
-                name="description"
+                id="text"
+                name="text"
                 label="Description"
                 fullWidth
-                value={description}
-
+                value={text}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                required
                 id="phone"
                 name="phone"
                 label="Phone"
                 fullWidth
                 value={phone}
-
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                required
                 id="price"
                 name="price"
                 label="Price"
                 fullWidth
                 value={price}
-
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                required
-                id="image"
-                name="image"
+                id="photo"
+                name="photo"
                 label="Image link"
                 fullWidth
-                value={image}
-
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id="imageTitle"
-                name="imageTitle"
-                label="Image title"
-                fullWidth
-                value={imageTitle}
-
+                value={photo}
               />
             </Grid>
           </Grid>
