@@ -3,6 +3,7 @@ import Axios from 'axios';
 
 /* selectors */
 export const getAll = ({ posts }) => posts.data;
+// export const getAllPublished = ({ posts }) => posts.data.filter(item => item.status == 'published');
 export const getLoadingState = ({ posts }) => posts.loading;
 
 /* action name creator */
@@ -25,15 +26,17 @@ export const updatePostStatus = payload => ({ payload, type: UPDATE_POST_STATUS 
 export const fetchPublished = () => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
-
-    Axios
-      .get('http://localhost:8000/api/posts')
-      .then(res => {
-        dispatch(fetchSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(fetchError(err.message || true));
-      });
+    const state = getState();
+    if (state.posts.data.length === 0 && state.posts.loading.active) {
+      Axios
+        .get('http://localhost:8000/api/posts')
+        .then(res => {
+          dispatch(fetchSuccess(res.data));
+        })
+        .catch(err => {
+          dispatch(fetchError(err.message || true));
+        });
+    }
   };
 };
 
