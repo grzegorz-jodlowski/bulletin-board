@@ -17,7 +17,24 @@ import TextField from '@material-ui/core/TextField';
 
 
 class Component extends React.Component {
+  state = {
+    author: null,
+    created: null,
+    status: null,
+    title: null,
+    text: null,
+    photo: null,
+    price: null,
+    phone: null,
+    location: null,
+  }
 
+  handleClick() {
+    const currentDate = new Date();
+    this.setState({ created: currentDate.toISOString() }, () => {
+      //add func
+    });
+  }
 
   render() {
     const { isLogged } = this.props;
@@ -38,6 +55,7 @@ class Component extends React.Component {
                   label="Email address"
                   fullWidth
                   autoComplete="email"
+                  onChange={(e) => this.setState({ author: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -47,6 +65,7 @@ class Component extends React.Component {
                   name="title"
                   label="Title"
                   fullWidth
+                  onChange={(e) => this.setState({ title: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -56,6 +75,7 @@ class Component extends React.Component {
                   name="text"
                   label="Description"
                   fullWidth
+                  onChange={(e) => this.setState({ text: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -64,6 +84,7 @@ class Component extends React.Component {
                   name="phone"
                   label="Phone"
                   fullWidth
+                  onChange={(e) => this.setState({ phone: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -72,6 +93,7 @@ class Component extends React.Component {
                   name="price"
                   label="Price"
                   fullWidth
+                  onChange={(e) => this.setState({ price: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -80,6 +102,7 @@ class Component extends React.Component {
                   name="photo"
                   label="Image link"
                   fullWidth
+                  onChange={(e) => this.setState({ photo: e.target.value })}
                 />
               </Grid>
             </Grid>
@@ -88,6 +111,7 @@ class Component extends React.Component {
                 variant="contained"
                 color="primary"
                 className={styles.button}
+                onClick={() => this.handleClick()}
               >
                 Add
               </Button>
