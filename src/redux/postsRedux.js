@@ -57,18 +57,19 @@ export const fetchPostDetails = id => {
   };
 };
 
-// export const postToAPI = ({ id, order, status }, newStatus) => {
-//   return (dispatch, getState) => {
-//     Axios
-//       .put(`${api.url}/${api.posts}/${id}`, { id: id, order: order, status: newStatus })
-//       .then(res => {
-//         dispatch(updatePostStatus(res.data));
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   };
-// };
+export const postToAPI = (post) => {
+  return (dispatch, getState) => {
+    Axios
+      .post('http://localhost:8000/api/posts/', post)
+      .then(res => {
+        // dispatch(updatePostStatus(res.data));
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
