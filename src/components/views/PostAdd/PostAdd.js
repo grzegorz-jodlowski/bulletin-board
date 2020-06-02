@@ -36,7 +36,7 @@ class Component extends React.Component {
 
     const currentDate = new Date();
 
-    this.setState({ created: currentDate.toISOString(), updated: currentDate.toISOString(), status: 'draft' }, () => {
+    this.setState({ created: currentDate.toISOString(), updated: currentDate.toISOString(), status: 'published' }, () => {
       postToAPI(this.state);
       this.setState({
         author: '',

@@ -33,7 +33,7 @@ router.post('/posts', async (req, res) => {
   try {
     const newPost = new Post(req.body);
     await newPost.save();
-    res.json({ message: 'OK' });
+    res.json(newPost);
   } catch (error) {
     res.status(500).json({ message: error });
   }
