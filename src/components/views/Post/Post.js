@@ -4,6 +4,8 @@ import clsx from 'clsx';
 
 import styles from './Post.module.scss';
 
+import { Link } from 'react-router-dom';
+
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import CardContent from '@material-ui/core/CardContent';
@@ -60,7 +62,7 @@ class Component extends React.Component {
 
             </CardContent>
             <CardActions className={styles.cardActions}>
-              {(isLogged && (isPostAuthor || isAdmin)) && (<Button size="medium" color="primary" variant="contained" href={`${process.env.PUBLIC_URL}/post/${_id}/edit`}>
+              {(isLogged && (isPostAuthor || isAdmin)) && (<Button component={Link} size="medium" color="primary" variant="contained" to={`${process.env.PUBLIC_URL}/post/${_id}/edit`}>
                 Edit
               </Button>)}
               <Button size="medium" color="primary" variant="contained" href={`mailto:${author}`}>
