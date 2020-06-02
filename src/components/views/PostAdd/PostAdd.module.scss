@@ -3,3 +3,32 @@
 // .root {
 
 // }
+
+.header {
+  margin-bottom: 25px;
+}
+.layout {
+  width: auto;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  @media (min-width: 1024px) {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.paper {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.button {
+  margin-top: 0.75rem;
+  margin-left: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
