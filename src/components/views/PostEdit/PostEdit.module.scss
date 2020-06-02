@@ -3,3 +3,37 @@
 // .root {
 
 // }
+
+.header {
+  margin-bottom: "25px";
+}
+.layout {
+  width: "auto";
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  // [theme.breakpoints.up(800 + .5rem * 2)]: {
+  //   width: 800;
+  //   marginLeft: 'auto';
+  //   marginRight: 'auto';
+  // };
+}
+.paper {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  // [theme.breakpoints.up(600 + .75rem * 2)]: {
+  //   marginTop: 1.5rem;
+  //   marginBottom: 1.5rem;
+  //   padding: .75rem;
+  // };
+}
+.buttons {
+  display: "flex";
+  justify-content: "flex-end";
+}
+.button {
+  margin-top: 0.75rem;
+  margin-left: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
