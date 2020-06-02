@@ -59,9 +59,9 @@ const useStyles = makeStyles((theme) => ({
 const Component = ({ isLogged, currentUser, match, posts }) => {
   const classes = useStyles();
 
-  const post = posts.find(el => el.id === match.params.id);
+  const post = posts.find(el => el._id === match.params._id);
 
-  const { title, photo, text, price, id, phone, author, status, created } = post;
+  const { title, photo, text, price, _id, phone, author, status, created } = post;
   const { isAdmin, email } = currentUser;
 
   const isPostAuthor = author === email ? true : false;
