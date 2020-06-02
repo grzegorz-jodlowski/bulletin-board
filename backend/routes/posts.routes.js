@@ -29,4 +29,14 @@ router.get('/posts/:id', async (req, res) => {
   }
 });
 
+router.post('/posts', async (req, res) => {
+  try {
+    const newPost = new Post(req.body);
+    await newPost.save();
+    res.json({ message: 'OK' });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
 module.exports = router;
