@@ -13,51 +13,12 @@ import { Login } from '../Login/Login';
 import { NotFound } from '../NotFound/NotFound';
 
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    marginBottom: '25px',
-  },
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up(800 + theme.spacing(2) * 2)]: {
-      width: 800,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
-  },
-  paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4),
-
-  },
-}));
-
 const Component = ({ isLogged, currentUser, match, posts }) => {
-  const classes = useStyles();
 
   const post = posts.find(el => el._id === match.params._id);
 
@@ -68,9 +29,9 @@ const Component = ({ isLogged, currentUser, match, posts }) => {
 
   if (isLogged && (isPostAuthor || isAdmin)) {
     return (
-      <main className={classes.layout}>
-        <Paper className={classes.paper}>
-          <Typography className={classes.header} component="h1" variant="h4" align="center">
+      <main className={styles.layout}>
+        <Paper className={styles.paper}>
+          <Typography className={styles.header} component="h1" variant="h4" align="center">
             Edit your ad
           </Typography>
           <Grid container spacing={3}>
@@ -133,11 +94,11 @@ const Component = ({ isLogged, currentUser, match, posts }) => {
               />
             </Grid>
           </Grid>
-          <div className={classes.buttons}>
+          <div className={styles.buttons}>
             <Button
               variant="contained"
               color="primary"
-              className={classes.button}
+              className={styles.button}
             >
               Edit
             </Button>
