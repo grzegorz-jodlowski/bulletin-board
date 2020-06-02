@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
+import { Link } from 'react-router-dom';
+
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -41,7 +43,7 @@ const Component = ({ className, isLogged }) => {
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
-              {isLogged && <Button variant="contained" color="primary" href={`${process.env.PUBLIC_URL}/post/add`}>
+              {isLogged && <Button component={Link} variant="contained" color="primary" to={`${process.env.PUBLIC_URL}/post/add`}>
                 Add new
               </Button>}
             </Grid>
