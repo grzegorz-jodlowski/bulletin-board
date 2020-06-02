@@ -6,6 +6,7 @@ import styles from './PostAdd.module.scss';
 
 import { connect } from 'react-redux';
 import { getLoginState } from '../../../redux/loginRedux';
+import { postToAPI } from '../../../redux/postsRedux';
 
 import { Login } from '../Login/Login';
 
@@ -18,21 +19,37 @@ import TextField from '@material-ui/core/TextField';
 
 class Component extends React.Component {
   state = {
-    author: null,
-    created: null,
-    status: null,
-    title: null,
-    text: null,
-    photo: null,
-    price: null,
-    phone: null,
-    location: null,
+    author: '',
+    created: '',
+    updated: '',
+    status: '',
+    title: '',
+    text: '',
+    photo: '',
+    price: '',
+    phone: '',
+    location: '',
   }
 
   handleClick() {
+    const { postToAPI } = this.props;
+
     const currentDate = new Date();
-    this.setState({ created: currentDate.toISOString() }, () => {
-      //add func
+
+    this.setState({ created: currentDate.toISOString(), updated: currentDate.toISOString(), status: 'draft' }, () => {
+      postToAPI(this.state);
+      this.setState({
+        author: '',
+        created: '',
+        updated: '',
+        status: '',
+        title: '',
+        text: '',
+        photo: '',
+        price: '',
+        phone: '',
+        location: '',
+      });
     });
   }
 
@@ -55,6 +72,7 @@ class Component extends React.Component {
                   label="Email address"
                   fullWidth
                   autoComplete="email"
+                  value={this.state.author}
                   onChange={(e) => this.setState({ author: e.target.value })}
                 />
               </Grid>
@@ -65,6 +83,7 @@ class Component extends React.Component {
                   name="title"
                   label="Title"
                   fullWidth
+                  value={this.state.title}
                   onChange={(e) => this.setState({ title: e.target.value })}
                 />
               </Grid>
@@ -75,6 +94,7 @@ class Component extends React.Component {
                   name="text"
                   label="Description"
                   fullWidth
+                  value={this.state.text}
                   onChange={(e) => this.setState({ text: e.target.value })}
                 />
               </Grid>
@@ -84,6 +104,7 @@ class Component extends React.Component {
                   name="phone"
                   label="Phone"
                   fullWidth
+                  value={this.state.phone}
                   onChange={(e) => this.setState({ phone: e.target.value })}
                 />
               </Grid>
@@ -93,6 +114,7 @@ class Component extends React.Component {
                   name="price"
                   label="Price"
                   fullWidth
+                  value={this.state.price}
                   onChange={(e) => this.setState({ price: e.target.value })}
                 />
               </Grid>
@@ -102,6 +124,7 @@ class Component extends React.Component {
                   name="photo"
                   label="Image link"
                   fullWidth
+                  value={this.state.photo}
                   onChange={(e) => this.setState({ photo: e.target.value })}
                 />
               </Grid>
@@ -129,17 +152,18 @@ Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   isLogged: PropTypes.bool,
+  postToAPI: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   isLogged: getLoginState(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  postToAPI: (post) => dispatch(postToAPI(post)),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as PostAdd,
