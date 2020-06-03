@@ -1,7 +1,6 @@
 {
   "name": "bulletin-board",
   "version": "0.1.0",
-  "homepage": "https://grzegorz-jodlowski.github.io/bulletin-board/",
   "private": true,
   "scripts": {
     "start": "run-p start:* ",
