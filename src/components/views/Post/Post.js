@@ -79,7 +79,7 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-  post: PropTypes.array,
+  post: PropTypes.object,
   match: PropTypes.object,
   currentUser: PropTypes.object,
   isLogged: PropTypes.bool,

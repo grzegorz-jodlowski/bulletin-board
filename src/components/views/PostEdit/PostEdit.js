@@ -18,100 +18,106 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
-const Component = ({ isLogged, currentUser, match, posts }) => {
+class Component extends React.Component {
 
-  const post = posts.find(el => el._id === match.params._id);
+  render() {
+    const { posts, isLogged, match, currentUser } = this.props;
 
-  const { title, photo, text, price, phone, author } = post;
-  const { isAdmin, email } = currentUser;
 
-  const isPostAuthor = author === email ? true : false;
+    const post = posts.find(el => el._id === match.params._id);
 
-  if (isLogged && (isPostAuthor || isAdmin)) {
-    return (
-      <main className={styles.layout}>
-        <Paper className={styles.paper}>
-          <Typography className={styles.header} component="h1" variant="h4" align="center">
-            Edit your ad
-          </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <TextField
-                required
-                id="author"
-                name="author"
-                label="Email address"
-                fullWidth
-                autoComplete="email"
-                value={author}
-              />
+    const { title, photo, text, price, phone, author } = post;
+    const { isAdmin, email } = currentUser;
+
+    const isPostAuthor = author === email ? true : false;
+
+    if (isLogged && (isPostAuthor || isAdmin)) {
+      return (
+        <main className={styles.layout}>
+          <Paper className={styles.paper}>
+            <Typography className={styles.header} component="h1" variant="h4" align="center">
+              Edit your ad
+            </Typography>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  id="author"
+                  name="author"
+                  label="Email address"
+                  fullWidth
+                  autoComplete="email"
+                  value={author}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  id="title"
+                  name="title"
+                  label="Title"
+                  fullWidth
+                  value={title}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  id="text"
+                  name="text"
+                  label="Description"
+                  fullWidth
+                  value={text}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  id="phone"
+                  name="phone"
+                  label="Phone"
+                  fullWidth
+                  value={phone}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  id="price"
+                  name="price"
+                  label="Price"
+                  fullWidth
+                  value={price}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  id="photo"
+                  name="photo"
+                  label="Image link"
+                  fullWidth
+                  value={photo}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                required
-                id="title"
-                name="title"
-                label="Title"
-                fullWidth
-                value={title}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                required
-                id="text"
-                name="text"
-                label="Description"
-                fullWidth
-                value={text}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="phone"
-                name="phone"
-                label="Phone"
-                fullWidth
-                value={phone}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="price"
-                name="price"
-                label="Price"
-                fullWidth
-                value={price}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="photo"
-                name="photo"
-                label="Image link"
-                fullWidth
-                value={photo}
-              />
-            </Grid>
-          </Grid>
-          <div className={styles.buttons}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={styles.button}
-            >
-              Edit
-            </Button>
-          </div>
-        </Paper>
-      </main>
-    );
-  } else if (isLogged) {
-    return <NotFound />;
-  } else {
-    return <Login />;
+            <div className={styles.buttons}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={styles.button}
+              >
+                Edit
+              </Button>
+            </div>
+          </Paper>
+        </main>
+      );
+    } else if (isLogged) {
+      return <NotFound />;
+    } else {
+      return <Login />;
+    }
   }
-};
+}
+
 
 Component.propTypes = {
   posts: PropTypes.array,
