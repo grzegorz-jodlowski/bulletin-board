@@ -1,11 +1,11 @@
 <p align="center">
-<a href="https:"><img src="./logo.jpeg" title="Fe" alt=""></a>
+<a href="https://bulletin-board-web.herokuapp.com/"><img src="public/logo.jpg" title="Fe" alt="snippet of Bulletin board app"></a>
 </p>
 
 
 
-# <p align="center"></p>
-<p align="center">Project for le</p>
+# <p align="center">📝 Bulletin board app</p>
+<p align="center">Project for mastering React, Express and MongoDB</p>
 
 </br>
 
@@ -37,7 +37,6 @@ This i
 - Axios
 - Thunk
 - Express
-- Socket.io (WebSocket)
 - MongoDB
 - MongoDB Atlas
 - Mongoose
@@ -101,12 +100,12 @@ yarn start
 
 
 ## <a name="si"></a>Website (on Heroku)
-[Fe](https:)
+[Bulletin board app](https://bulletin-board-web.herokuapp.com/)
 - if the page loads slowly, wait a moment, the server is waking up because it is hosted on a free platform Heroku.
 
 </br>
 </br>
 
-  *project implemented as part of the 9-month [Web Developer Plus](https://kodilla.com/pl/bootcamp/webdeveloper/?type=wdp&editionId=309) course organized by [Kodilla](https://drive.google.com/file/d/1AZGDMtjhsHbrtXhRSIlRKKc3RCxQk6YY/view?usp=sharing)
+  *mostly individual project implemented as part of the 9-month [Web Developer Plus](https://kodilla.com/pl/bootcamp/webdeveloper/?type=wdp&editionId=309) course organized by [Kodilla](https://drive.google.com/file/d/1AZGDMtjhsHbrtXhRSIlRKKc3RCxQk6YY/view?usp=sharing)
 
 
