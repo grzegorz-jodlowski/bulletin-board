@@ -27,7 +27,8 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/bulletinBoard', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost:27017/bulletinBoard', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://gjodlowski:${process.env.bulletinBoard}@cluster0-rm7fq.gcp.mongodb.net/bulletinBoard?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');
@@ -37,5 +38,5 @@ db.on('error', err => console.log('Error: ' + err));
 /* START SERVER */
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
-  console.log('Server is running on port: '+port);
+  console.log('Server is running on port: ' + port);
 });
