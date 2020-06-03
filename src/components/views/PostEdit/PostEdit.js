@@ -7,7 +7,7 @@ import styles from './PostEdit.module.scss';
 import { connect } from 'react-redux';
 import { getLoginState } from '../../../redux/loginRedux';
 import { getCurrentUser } from '../../../redux/userRedux';
-import { getAll } from '../../../redux/postsRedux';
+import { getCurrentPost, fetchPostDetails } from '../../../redux/postsRedux';
 
 import { Login } from '../Login/Login';
 import { NotFound } from '../NotFound/NotFound';
@@ -19,12 +19,13 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
 class Component extends React.Component {
+  componentDidMount() {
+    const { match, fetchPostDetails } = this.props;
+    fetchPostDetails(match.params._id);
+  }
 
   render() {
-    const { posts, isLogged, match, currentUser } = this.props;
-
-
-    const post = posts.find(el => el._id === match.params._id);
+    const { post, isLogged, currentUser } = this.props;
 
     const { title, photo, text, price, phone, author } = post;
     const { isAdmin, email } = currentUser;
@@ -120,23 +121,24 @@ class Component extends React.Component {
 
 
 Component.propTypes = {
-  posts: PropTypes.array,
+  post: PropTypes.object,
   match: PropTypes.object,
   currentUser: PropTypes.object,
   isLogged: PropTypes.bool,
+  fetchPostDetails: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
-  posts: getAll(state),
+  post: getCurrentPost(state),
   isLogged: getLoginState(state),
   currentUser: getCurrentUser(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  fetchPostDetails: (id) => dispatch(fetchPostDetails(id)),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as PostEdit,
