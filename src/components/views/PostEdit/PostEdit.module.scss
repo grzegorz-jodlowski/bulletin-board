@@ -11,21 +11,16 @@
   width: "auto";
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  // [theme.breakpoints.up(800 + .5rem * 2)]: {
-  //   width: 800;
-  //   marginLeft: 'auto';
-  //   marginRight: 'auto';
-  // };
+  @media (min-width: 1024px) {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .paper {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
   padding: 0.5rem;
-  // [theme.breakpoints.up(600 + .75rem * 2)]: {
-  //   marginTop: 1.5rem;
-  //   marginBottom: 1.5rem;
-  //   padding: .75rem;
-  // };
 }
 .buttons {
   display: "flex";
