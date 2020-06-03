@@ -23,12 +23,11 @@ import { getCurrentUser } from '../../../redux/userRedux';
 class Component extends React.Component {
   componentDidMount() {
     const { match, fetchPostDetails } = this.props;
-    console.log(' : Component -> componentDidMount -> match', match.params._id);
     fetchPostDetails(match.params._id);
   }
 
   render() {
-    const { post, isLogged, match, currentUser } = this.props;
+    const { post, isLogged, currentUser } = this.props;
 
     const { title, photo, text, price, _id, phone, author, status, created } = post;
     const { isAdmin, email } = currentUser;
