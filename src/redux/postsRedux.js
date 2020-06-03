@@ -1,5 +1,5 @@
 import Axios from 'axios';
-//import { api } from '../settings';
+import { api } from '../settings';
 
 /* selectors */
 export const getAll = ({ posts }) => posts.data;
@@ -33,7 +33,7 @@ export const fetchPublished = () => {
     const state = getState();
     if (state.posts.data.length === 0 && state.posts.loading.active) {
       Axios
-        .get('http://localhost:8000/api/posts')
+        .get(`${api.url}/${api.posts}`)
         .then(res => {
           dispatch(fetchSuccess(res.data));
         })
@@ -49,7 +49,7 @@ export const fetchPostDetails = id => {
     dispatch(fetchStarted());
 
     Axios
-      .get(`http://localhost:8000/api/posts/${id}`)
+      .get(`${api.url}/${api.posts}/${id}`)
       .then(res => {
         dispatch(fetchPostSuccess(res.data));
       })
@@ -62,7 +62,7 @@ export const fetchPostDetails = id => {
 export const postToAPI = (post) => {
   return (dispatch, getState) => {
     Axios
-      .post('http://localhost:8000/api/posts/', post)
+      .post(`${api.url}/${api.posts}`, post)
       .then(res => {
         dispatch(addPost(res.data));
         console.log(res.data);
