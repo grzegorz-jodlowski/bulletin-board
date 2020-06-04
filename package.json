@@ -4,6 +4,7 @@
   "scripts": {
     "start": "run-p start:* ",
     "start-silent": "run-p start > /dev/null",
+    "start:server": "nodemon backend/server.js",
     "start:react": "react-scripts start",
     "start-and-test": "run-p start-silent test ",
     "build": "react-scripts build",
@@ -46,6 +47,7 @@
     "axios": "^0.19.2",
     "clsx": "^1.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "express": "^4.17.1",
