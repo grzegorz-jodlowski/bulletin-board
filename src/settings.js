@@ -1,5 +1,4 @@
 export const api = {
-  // url: '//' + window.location.hostname + (window.location.hostname === 'localhost' ? ':3131/api' : '/api'),
-  url: '//' + window.location.hostname + '/api',
+  url: '//' + window.location.hostname + (window.location.hostname === 'localhost' ? ':8000/api' : '/api'),
   posts: 'posts',
 };
