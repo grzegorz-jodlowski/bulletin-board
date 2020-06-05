@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://bulletin-board-web.herokuapp.com/"><img src="public/logo.jpg" title="Fe" alt="snippet of Bulletin board app"></a>
+<a href="https://bulletin-board-web.herokuapp.com/"><img src="public/logo.jpg" title="Bulletin board" alt="snippet of Bulletin board app"></a>
 </p>
 
 
@@ -30,6 +30,7 @@ This i
 - HTML
 - CSS
 - SCSS
+- Material UI
 - JavaScript
 - React
 - React Router
@@ -47,6 +48,7 @@ This i
 ## <a name="what"></a>What I learned?
 
 - w
+- backend as client/ frontend as client ?
 
 
 
