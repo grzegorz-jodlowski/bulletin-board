@@ -14,7 +14,8 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "nodemon": "nodemon backend/server.js"
+    "nodemon": "nodemon backend/server.js",
+    "netlify": "node backend/server.js && yarn build"
   },
   "husky": {
     "hooks": {
