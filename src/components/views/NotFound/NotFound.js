@@ -4,6 +4,8 @@ import clsx from 'clsx';
 
 import styles from './NotFound.module.scss';
 
+import { Link } from 'react-router-dom';
+
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
 
@@ -20,9 +22,9 @@ const Component = ({ className, children }) => (
       <div className={styles.mouth}></div>
     </div>
 
-    <h1>Oops! Page not fount!</h1>
-    <div className={styles.btn}><a href={`${process.env.PUBLIC_URL}/`} > Return to Homepage</a></div>
-  </div >
+    <h1>Oops! Page not found!</h1>
+    <div className={styles.btn}><Link to={`${process.env.PUBLIC_URL}/`} > Return to Homepage</Link></div>
+  </div>
 );
 
 Component.propTypes = {
