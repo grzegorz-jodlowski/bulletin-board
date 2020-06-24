@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
 
 import styles from './PostEdit.module.scss';
 
@@ -119,7 +118,6 @@ class Component extends React.Component {
   }
 }
 
-
 Component.propTypes = {
   post: PropTypes.object,
   match: PropTypes.object,
@@ -141,7 +139,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as PostEdit,
   Container as PostEdit,
   Component as PostEditComponent, //for tests
 };

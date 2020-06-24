@@ -63,14 +63,9 @@ const mapStateToProps = state => ({
   isLogged: getLoginState(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
 const ReduxContainer = connect(mapStateToProps)(Component);
 
 export {
-  // Component as Hero,
   ReduxContainer as Hero,
   Component as HeroComponent, //for tests
 };

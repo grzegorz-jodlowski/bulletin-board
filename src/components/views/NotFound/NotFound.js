@@ -6,9 +6,6 @@ import styles from './NotFound.module.scss';
 
 import { Link } from 'react-router-dom';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
-
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
     <div className={styles.face}>
@@ -32,19 +29,8 @@ Component.propTypes = {
   className: PropTypes.string,
 };
 
-// const mapStateToProps = state => ({
-//   concerts: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   Component as NotFound,
-  // Container as NotFound,
   Component as NotFoundComponent, //for tests
 };
 

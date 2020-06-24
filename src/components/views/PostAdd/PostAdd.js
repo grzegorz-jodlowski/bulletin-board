@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import clsx from 'clsx';
 
 import styles from './PostAdd.module.scss';
 
@@ -166,7 +165,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as PostAdd,
   Container as PostAdd,
   Component as PostAddComponent, //for tests
 };

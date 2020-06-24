@@ -8,11 +8,6 @@ import Typography from '@material-ui/core/Typography';
 
 import { Copyright } from '../../common/Copyright/Copyright';
 
-
-
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/ExampleRedux';
-
 const Component = ({ className, children }) => (
   <footer className={clsx(className, styles.root)}>
     <Typography variant="h6" align="center" gutterBottom>
@@ -30,19 +25,8 @@ Component.propTypes = {
   className: PropTypes.string,
 };
 
-// const mapStateToProps = state => ({
-//   concerts: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   Component as Footer,
-  // Container as Footer,
   Component as FooterComponent, //for tests
 };
 

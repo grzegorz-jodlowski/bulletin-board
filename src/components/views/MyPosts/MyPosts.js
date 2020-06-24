@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
 
-import styles from './MyPosts.module.scss';
+// import styles from './MyPosts.module.scss';
 
 import { connect } from 'react-redux';
 import { getLoginState } from '../../../redux/loginRedux';
@@ -65,14 +64,9 @@ const mapStateToProps = state => ({
   currentUser: getCurrentUser(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
 const ReduxContainer = connect(mapStateToProps)(Component);
 
 export {
-  // Component as MyPosts,
   ReduxContainer as MyPosts,
   Component as MyPostsComponent, //for tests
 };

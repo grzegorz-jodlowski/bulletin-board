@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-
 import { NavLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
@@ -49,7 +48,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as PageNav,
   Container as PageNav,
   Component as PageNavComponent, //for tests
 };

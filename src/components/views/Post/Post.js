@@ -99,7 +99,6 @@ const mapDispatchToProps = dispatch => ({
 const ReduxContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as Post,
   ReduxContainer as Post,
   Component as PostComponent, //for tests
 };

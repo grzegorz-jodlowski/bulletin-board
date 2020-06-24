@@ -67,7 +67,6 @@ const mapDispatchToProps = dispatch => ({
 const ReduxContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as MainLayout,
   ReduxContainer as MainLayout,
   Component as MainLayoutComponent, //for tests
 };
